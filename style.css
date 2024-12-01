@@ -1,0 +1,772 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('img/sarcpicblur.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: black;
+  overflow-x: hidden;
+}
+
+.overlay {
+  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  
+}
+
+header img {
+  width: 80px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+nav {
+  display: flex;
+  gap: 50px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+nav a:hover {
+  background-color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+
+/* User Profile Icon - Account */
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 230px;
+  z-index: 1000;
+}
+
+.dropdown a {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  text-align: center;
+  width: 70%;
+}
+
+.dropdown a:hover {
+  background-color: #f5f5f5;
+}
+.hidden {
+  display: none;
+}
+
+.profile-options-icon {
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+}
+
+
+/* Log In Page */
+.login {
+  max-width: 400px;
+  margin: 100px auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.login label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+  width: calc(100% - 10px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+
+.create-account {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.create-account a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.create-account a:hover {
+  text-decoration: underline;
+}
+
+
+/* Sign Up Page - Email */
+.signup {
+  max-width: 400px;
+  margin: 100px auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.signup h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.signup label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.signup input[type="text"] {
+  width: calc(100% - 10px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.signup .buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.signup button {
+  width: 100%;
+  padding: 10px;
+  background-color: #141414;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.signup button:hover {
+  background-color: #005bb5;
+}
+
+.signup p.note {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+
+/* Sign Up Page - Password */
+.signup-pass {
+  max-width: 400px;
+  margin: 100px auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.signup-pass h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.signup-pass label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.signup-pass input[type="password"] {
+  width: calc(100% - 10px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.signup-pass button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+
+/* Sign Up Page - Form */
+.signupform {
+  max-width: 400px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.signupform-space {
+  padding-bottom: 20px;
+}
+
+.signupform h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.signupform input[type="text"],
+.signupform input[type="password"],
+.signupform input[type="file"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signupform input[type="checkbox"] {
+  margin-top: 15px;
+}
+
+.signupform label {
+  font-size: 14px;
+}
+
+.signupform button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signupform button:hover {
+  background-color: #333;
+}
+
+.attach-school-id {
+  display: block;
+  margin-top: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.modal h3 {
+  margin-top: 0;
+}
+
+.modal p {
+  text-align: left;
+}
+
+.modal .close-btn {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal .close-btn:hover {
+  background: #333;
+}
+
+.overlay-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+
+/* Event Calendar and Details Container */
+.calendar-container,
+.event-details-container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px 15px;
+  margin-top: 10px;
+  width: 650px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+/* Event Calendar */
+.calendar-container.shifted {
+  transform: translateX(-350px);
+}
+
+.calendar-container h3,
+.event-details-container h3 {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+.calendar-container p {
+  font-size: 1em;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.calendar-table th,
+.calendar-table td {
+  width: 14.28%;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  font-size: 1.1em;
+}
+
+.calendar-table .faded {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.calendar-table .highlighted {
+  background-color: #ffdada;
+  font-weight: bold;
+  color: #d00;
+}
+
+.note {
+  font-size: 0.9em;
+  color: #333;
+  margin-top: 10px;
+}
+
+
+
+/* Nav of Months */
+.month-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.month-nav h4 {
+  margin: 0 10px;
+  font-size: 1.2em;
+}
+
+.nav-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.nav-button:hover {
+  background-color: #555;
+}
+
+
+
+
+/* Event Details */
+.event-details-container {
+  position: absolute;
+  top: 150px;
+  right: -700px;
+  transition: all 0.5s ease;
+  z-index: 10;
+  background-color: rgba(255, 255, 255);
+}
+
+.event-details-container.active {
+  right: 70px;
+}
+
+.event-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.event-details-table th,
+.event-details-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.event-details-table th {
+  width: 150px;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #d00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 11;
+  transition: background-color 0.3s ease;
+}
+.back-button:hover {
+  background-color: #a00;
+}
+
+
+
+/* Appoint section */
+
+
+
+
+/* Appointment Form */
+.appointform-container {
+  background: rgba(255, 255, 255, 0.8);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 10px auto;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appointform-container h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-group label {
+  font-size: 14px;
+  text-align: right;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form-group select {
+  padding: 5px;
+  font-size: 14px;
+  margin: 2px;
+}
+
+.reason-select {
+  display: inline-flex;
+  padding: 5px;
+  font-size: 14px;
+  width: 60%;
+  align-items: center;
+}
+
+.form-group input {
+  display: inline;
+  padding: 5px;
+  font-size: 10px;
+  width: 300px;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="file"] {
+  padding: 5px;
+}
+
+.appoint-name-input {
+  margin-left: 65px;
+}
+
+.appoint-reason-select-label {
+  width: 200px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.buttons button {
+  display: flex;
+  padding: 10px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.buttons button:hover {
+  background-color: #005bb5;
+}
+
+.appointform-buttons button:hover {
+  background-color: #005bb5;
+}
+
+.form-group button {
+  width: 50%;
+  padding: 8px;
+  margin: 10px 8px;
+  font-size: 14px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-group button:hover {
+  background-color: #20252a;
+}
+
+
+/* POP UP Window of Appointment Form - Confirmation */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
+}
+
+.overlay-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.close-btn {
+  margin: 10px 5px;
+  padding: 10px;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #333;
+}
+
+
+
+
+/* Shared Styles for Change Containers */
+.change-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px;
+  margin: 50px auto;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.change-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.change-container hr {
+  margin: 10px 0 20px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.change-container .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.change-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.change-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.change-container .submit-btn {
+  background-color: #2f2f2f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.change-container .submit-btn:hover {
+  background-color: #004494;
+}
+
+
+
+
+/* Footer */
+footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 0.8rem;
+  color: black;
+}
+
+footer img {
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}

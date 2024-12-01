@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Contact Number | Student Assistance Resource Center Scheduling Portal</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="overlay"></div>
+
+    <!-- Header Section -->
+    <header>
+      <img src="img/sarclogonobg.png" alt="SARC Logo">
+      <nav>
+        <a href="/home.html">Home</a>
+        <a href="/events-account.html">View Events</a>
+        <a href="/appoint.html">Appoint</a>
+      </nav>
+      <div class="profile-container">
+        <img src="img/user-profile-icon.png" alt="Profile" class="profile-icon" onclick="toggleDropdown()">
+        <div id="profile-dropdown" class="dropdown hidden">
+          <img src="img/edit-profile-icon.png" alt="Edit Profile Icon" class="profile-options-icon"><a href="/edit-profile.html">Edit Profile ></a> <br>
+          <img src="img/change-contact-icon.png" alt="Change Contact Icon" class="profile-options-icon"><a href="/change-contact.html">Change Contact ></a> <br>
+          <img src="img/logout-icon.png" alt="Log Out Icon" class="profile-options-icon"><a href="/index.html">Log Out</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Change Contact Container -->
+    <main>
+      <div class="container change-container">
+        <h1>Contact Number</h1>
+        <hr>
+        <h4>Edit Contact No.</h4>
+        <form>
+          <div class="form-group">
+            <label for="old-contact">Enter Old Contact Number:</label>
+            <input type="text" id="old-contact" name="old-contact" required>
+          </div>
+          <div class="form-group">
+            <label for="new-contact">Enter New Contact Number:</label>
+            <input type="text" id="new-contact" name="new-contact" required>
+          </div>
+          <div class="form-group">
+            <label for="confirm-contact">Re-enter New Contact Number:</label>
+            <input type="text" id="confirm-contact" name="confirm-contact" required>
+          </div>
+          <button type="submit" class="submit-btn" onclick="window.location.href='edit-profile.html'">Submit</button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>
+        Student Assistance Resource Center, Quezon City University, San Bartolome Branch <br>
+        <img src="img/location-icon.png" alt="Location"> Ground Floor, Academic Building <br>
+        <img src="img/phone-icon.png" alt="Phone"> (02) 8806-3049
+      </p>
+    </footer>
+
+    <script src="myscripts.js"></script>
+  </body>
+</html>

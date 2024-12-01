@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Form | Student Assistance Resource Center Scheduling Portal</title>
+  <style>
+    .body-appoint-form {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/sarcpicblur.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: black;
+      overflow-x: hidden;
+    }
+
+    .overlay-appoint-form {
+      background: rgba(255, 255, 255, 0.5);
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 50px;
+
+    }
+
+    header img {
+      width: 80px;
+      margin-right: 50px;
+      margin-left: 50px;
+    }
+
+    nav {
+      display: flex;
+      gap: 50px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background-color: white;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 100px auto;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+
+    /* User Profile Icon - Account */
+    .profile-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 50%;
+      margin-right: 50px;
+      margin-left: 50px;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 230px;
+      z-index: 1000;
+    }
+
+    .dropdown a {
+      display: inline-block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+      text-align: center;
+      width: 70%;
+    }
+
+    .dropdown a:hover {
+      background-color: #f5f5f5;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .profile-options-icon {
+      padding-left: 10px;
+      padding-top: 10px;
+      width: 16px;
+      height: 16px;
+      margin: 0 auto;
+    }
+
+
+
+
+    /* Appointment Form */
+    .appoint-form-container {
+      background: rgba(255, 255, 255, 0.8);
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      margin: 10px auto;
+      height: 480px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .form-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      text-align: right;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .form-group select {
+      padding: 5px;
+      font-size: 14px;
+      margin: 2px;
+    }
+
+    .reason-select {
+      display: inline-flex;
+      padding: 5px;
+      font-size: 14px;
+      width: 60%;
+      align-items: center;
+    }
+
+    .form-group input {
+      display: inline;
+      padding: 5px;
+      width: 300px;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="file"] {
+      padding: 5px;
+    }
+
+    .appoint-name-input {
+      margin-left: 65px;
+    }
+
+    .appoint-reason-select-label {
+      width: 200px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    .buttons button {
+      display: flex;
+      padding: 10px;
+      background-color: #000000;
+      color: white;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background-color: #005bb5;
+    }
+
+    .form-group button {
+      width: 50%;
+      padding: 8px;
+      margin: 10px 8px;
+      font-size: 14px;
+      background-color: #000000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #20252a;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .file-name-design {
+      margin-left: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+
+    /* POP UP Window of Appointment Form - Confirmation */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      z-index: 1000;
+      width: 300px;
+      text-align: center;
+    }
+
+    .overlay-bg {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .close-btn {
+      margin: 10px 5px;
+      padding: 10px;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background: #333;
+    }
+
+
+
+
+    /* Footer */
+    footer {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 0.8rem;
+      color: black;
+    }
+
+    footer img {
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+
+<body class="body-appoint-form">
+  <div class="overlay-appoint-form"></div>
+
+  <!-- Header Section -->
+  <header>
+    <img src="img/sarclogonobg.png" alt="SARC Logo">
+    <nav>
+      <a href="/home.html">Home</a>
+      <a href="/events-account.html">View Events</a>
+      <a href="/appoint.html">Appoint</a>
+    </nav>
+    <div class="profile-container">
+      <img src="img/user-profile-icon.png" alt="Profile" class="profile-icon" onclick="toggleDropdown()">
+      <div id="profile-dropdown" class="dropdown hidden">
+        <img src="img/edit-profile-icon.png" alt="Edit Profile Icon" class="profile-options-icon"><a
+          href="/edit-profile.html">Edit Profile ></a>
+        <img src="img/change-password-icon.png" alt="Change Password Icon" class="profile-options-icon"><a
+          href="/change-password.html">Change Password ></a>
+        <img src="img/logout-icon.png" alt="Log Out Icon" class="profile-options-icon"><a href="/index.html">Log Out</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="appoint-form-container">
+    <form>
+      <h2>APPOINTMENT</h2>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Name" class="appoint-name-input">
+      </div>
+      <div class="form-group">
+        <label for="student-number">Student Number:</label>
+        <input type="text" id="student-number" placeholder="Student &#35;" name="student-number">
+      </div>
+      <div class="form-group">
+        <label for="contact-number">Contact Number:</label>
+        <input type="text" id="contact-number" placeholder="Contact &#35;" name="contact-number">
+      </div>
+
+      <div class="reason-select">
+        <label for="reason" class="appoint-reason-select-label">Reason for Appointing:</label>
+        <select id="reason" name="reason" class="reason-select">
+          <option value="">-</option>
+          <option value="Study">Study</option>
+          <option value="ReadBooks">Read Books</option>
+          <option value="CreateHomeworks">Create Homeworks</option>
+          <option value="CreateProjects">Create Projects</option>
+          <option value="WorkOnAResearch">Work On A Research</option>
+          <option value="GroupStudy">Group Study</option>
+          <option value="GroupMeeting">Group Meeting</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="appoint-other-details">Date:</label>
+        <div class="time-group">
+          <select name="month" id="month">
+            <option value="">Month</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+          <select name="day" id="day">
+            <option value="">Day</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+          </select>
+          <select name="year" id="year">
+            <option value="">Year</option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">...-2021</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="appoint-other-details">Table Number:</label>
+        <select name="table-number">
+          <option value="">-</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <label>Seat Number:</label>
+        <select name="seat-number">
+          <option value="">-</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="appoint-other-details">Time Start:</label>
+        <select name="time-start-hour">
+          <option value="">Hour</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <select name="time-start-minute">
+          <option value="">Minute</option>
+          <option value="00">00</option>
+          <option value="05">05</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+          <option value="35">35</option>
+          <option value="40">40</option>
+          <option value="45">45</option>
+          <option value="50">50</option>
+          <option value="55">55</option>
+        </select>
+        <select name="time-start-ampm">
+          <option value="">-</option>
+          <option value="AM">A.M.</option>
+          <option value="PM">P.M.</option>
+        </select>
+        <label class="appoint-other-details">Time End:</label>
+        <select name="time-end-hour">
+          <option value="">Hour</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <select name="time-end-minute">
+          <option value="">Minute</option>
+          <option value="00">00</option>
+          <option value="05">05</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+          <option value="35">35</option>
+          <option value="40">40</option>
+          <option value="45">45</option>
+          <option value="50">50</option>
+          <option value="55">55</option>
+        </select>
+        <select name="time-end-ampm">
+          <option value="">-</option>
+          <option value="AM">A.M.</option>
+          <option value="PM">P.M.</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="attach-school-id">Attach School ID (Front Display)</label>
+        <input type="file" id="id-upload"><br>
+        <!-- <button type="button" onclick="document.getElementById('file-upload').click()">Attach School ID &lang;Front Display&rang;</button>
+        <input type="file" id="file-upload" style="display: none;" onchange="displayFileName()">
+        <span id="file-name" class="file-name-design"></span> !-->
+      </div>
+      <div class="buttons">
+        <button type="button" onclick="window.location.href='events-account.html'">View Available Tables and
+          Seats</button>
+        <button type="submit">Appoint</button>
+      </div>
+      <p class="note">
+        Note: Students cannot make an appointment when there is an event scheduled<br>
+        for the time being. Outside the time frame of the event, students can still appoint.
+      </p>
+    </form>
+  </div>
+
+  <footer>
+    <p>
+      Student Assistance Resource Center, Quezon City University, San Bartolome Branch <br>
+      <img src="img/location-icon.png" alt="Location"> Ground Floor, Academic Building <br>
+      <img src="img/phone-icon.png" alt="Phone"> (02) 8806-3049
+    </p>
+  </footer>
+
+
+
+
+  <script>
+    // User Profile Options
+    function toggleDropdown() {
+      const dropdown = document.getElementById("profile-dropdown");
+      dropdown.classList.toggle("hidden");
+    }
+
+    // Close the dropdown if clicked outside
+    window.addEventListener("click", function (event) {
+      const dropdown = document.getElementById("profile-dropdown");
+      const profileIcon = document.querySelector(".profile-icon");
+
+      if (event.target !== dropdown && event.target !== profileIcon) {
+        dropdown.classList.add("hidden");
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      const modal = document.createElement("div");
+      const overlay = document.createElement("div");
+
+
+      // Show the filename of the uploaded file
+      function displayFileName() {
+        const fileInput = document.getElementById('file-upload');
+        const fileNameSpan = document.getElementById('file-name');
+
+        if (fileInput.files.length > 0) {
+          fileNameSpan.textContent = `File: ${fileInput.files[0].name}`;
+        } else {
+          fileNameSpan.textContent = '';
+        }
+      }
+
+
+
+      // Modal Styles
+      modal.classList.add("modal");
+      overlay.classList.add("overlay-bg");
+      modal.innerHTML = `
+        <h3>Appointment Details</h3>
+        <div id="appointment-details"></div>
+        <button id="confirm-btn" class="close-btn">Confirm</button>
+        <button id="cancel-btn" class="close-btn">Cancel</button>
+      `;
+      document.body.appendChild(modal);
+      document.body.appendChild(overlay);
+
+      // Form Validation
+      function validateForm() {
+        const inputs = form.querySelectorAll("input, select");
+        for (const input of inputs) {
+          if (input.value.trim() === "") {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      // Show Modal
+      function showModal() {
+        const detailsContainer = document.getElementById("appointment-details");
+
+        // Populate appointment details
+        const name = form.querySelector("#name").value;
+        const studentNumber = form.querySelector("#student-number").value;
+        const contactNumber = form.querySelector("#contact-number").value;
+        const reason = form.querySelector("#reason").value;
+        const date = `${form.querySelector("#month").value} ${form.querySelector("#day").value}, ${form.querySelector("#year").value}`;
+        const table = form.querySelector("[name='table-number']").value;
+        const seat = form.querySelector("[name='seat-number']").value;
+        const timeStart = `${form.querySelector("[name='time-start-hour']").value}:${form.querySelector("[name='time-start-minute']").value} ${form.querySelector("[name='time-start-ampm']").value}`;
+        const timeEnd = `${form.querySelector("[name='time-end-hour']").value}:${form.querySelector("[name='time-end-minute']").value} ${form.querySelector("[name='time-end-ampm']").value}`;
+
+        detailsContainer.innerHTML = `
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Student Number:</strong> ${studentNumber}</p>
+          <p><strong>Contact Number:</strong> ${contactNumber}</p>
+          <p><strong>Reason:</strong> ${reason}</p>
+          <p><strong>Date:</strong> ${date}</p>
+          <p><strong>Table Number:</strong> ${table}</p>
+          <p><strong>Seat Number:</strong> ${seat}</p>
+          <p><strong>Time:</strong> ${timeStart} - ${timeEnd}</p>
+        `;
+
+        modal.style.display = "block";
+        overlay.style.display = "block";
+      }
+
+      // Hide Modal
+      function hideModal() {
+        modal.style.display = "none";
+        overlay.style.display = "none";
+      }
+
+      // Event Listeners
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (validateForm()) {
+          showModal();
+        } else {
+          alert("Please fill out all fields before submitting.");
+        }
+      });
+
+      document.getElementById("confirm-btn").addEventListener("click", function () {
+        hideModal();
+        window.location.href = "/receipt.html";
+      });
+
+      document.getElementById("cancel-btn").addEventListener("click", hideModal);
+    });
+
+
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      const fileInput = document.getElementById("file-upload");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const appointmentDetails = {
+          name: document.getElementById("name").value,
+          studentNumber: document.getElementById("student-number").value,
+          contactNumber: document.getElementById("contact-number").value,
+          reason: document.getElementById("reason").value,
+          date: `${document.getElementById("month").value} ${document.getElementById("day").value}, ${document.getElementById("year").value}`,
+          table: document.querySelector("[name='table-number']").value,
+          seat: document.querySelector("[name='seat-number']").value,
+          timeStart: `${document.querySelector("[name='time-start-hour']").value}:${document.querySelector("[name='time-start-minute']").value} ${document.querySelector("[name='time-start-ampm']").value}`,
+          timeEnd: `${document.querySelector("[name='time-end-hour']").value}:${document.querySelector("[name='time-end-minute']").value} ${document.querySelector("[name='time-end-ampm']").value}`,
+        };
+
+
+        // Handle uploaded file
+        if (fileInput.files.length > 0) {
+          const fileReader = new FileReader();
+          fileReader.onload = (event) => {
+            appointmentDetails.uploadedFile = event.target.result;
+            saveAndRedirect(appointmentDetails);
+          };
+          fileReader.readAsDataURL(fileInput.files[0]);
+        } else {
+          saveAndRedirect(appointmentDetails);
+        }
+      });
+
+      function saveAndRedirect(details) {
+        sessionStorage.setItem("appointmentDetails", JSON.stringify(details));
+        window.location.href = "receipt.html";
+      }
+    });
+
+
+  </script>
+</body>
+
+</html>

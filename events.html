@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Calendar | Student Assistance Resource Center Scheduling Portal</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="overlay"></div>
+
+    <!-- Header Section -->
+    <header>
+      <img src="img/sarclogonobg.png" alt="SARC Logo">
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/events.html">View Events</a>
+        <a href="/login.html">Login</a>
+      </nav>
+    </header>
+
+    <!-- View Events -->
+    <div class="events">
+      <!-- Calendar Section -->
+      <div id="calendar" class="calendar-container">
+        <h3>EVENTS CALENDAR</h3>
+        <div class="month-nav">
+          <button id="prev-month" class="nav-button">&lt;</button>
+          <h4 id="current-month">November 2024</h4>
+          <button id="next-month" class="nav-button">&gt;</button>
+        </div>
+        <table class="calendar-table" id="calendar-table">
+          <thead>
+            <tr>
+              <th>Sun</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+          </thead>
+          <tbody id="calendar-body">
+            <!-- Calendar cells will be dynamically generated -->
+          </tbody>
+        </table>
+        <p class="note">Note: Students cannot make an appointment when there is an event scheduled for the time-being. Outside the time frame of the event, students can still appoint.</p>
+      </div>
+      
+      <!-- Event Details Section -->
+      <div id="event-details" class="event-details-container">
+        <h3>Event Details</h3>
+        <button class="back-button" onclick="toggleEventDetails()">Back</button>
+        <table class="event-details-table">
+          <tr>
+            <th>Date Range</th>
+            <td>1-13</td>
+            <td>Students Appointment Allowed</td>
+          </tr>
+          <tr>
+            <th>Date</th>
+            <td>14</td>
+            <td>
+              <strong>Event:</strong> Creative Student Society Seminar for Technology and Digital Skills<br>
+              <strong>Organizer:</strong> Naruto U. Dela Cruz (CSS Chairman)<br>
+              <strong>Date:</strong> November 14, 2024<br>
+              <strong>Time:</strong> 1:00 PM - 5:00 PM
+            </td>
+          </tr>
+          <tr>
+            <th>Date Range</th>
+            <td>15-30</td>
+            <td>Students Appointment Allowed</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>
+        Student Assistance Resource Center, Quezon City University, San Bartolome Branch <br>
+        <img src="img/location-icon.png" alt="Location"> Ground Floor, Academic Building <br>
+        <img src="img/phone-icon.png" alt="Phone"> (02) 8806-3049
+      </p>
+    </footer>
+
+    <script src="myscripts.js"></script>
+  </body>
+</html>

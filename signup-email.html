@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up | Student Assistance Resource Center Scheduling Portal</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="overlay"></div>
+
+        <!-- Header Section -->
+        <header>
+            <img src="img/sarclogonobg.png" alt="SARC Logo">
+            <nav>
+                <a href="/index.html">Home</a>
+                <a href="/events.html">View Events</a>
+                <a href="/login.html">Login</a>
+            </nav>
+        </header>
+
+        <!-- Sign Up Form -->
+        <div class="signup">
+            <h2>Sign Up</h2>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email">
+        
+            <label for="code">Enter Code:</label>
+            <div class="buttons">
+                <input type="text" id="code" name="code" style="flex-grow: 1;" placeholder="Enter code here">
+                <button type="button" id="send-btn">Send</button>
+                <button type="button" id="resend-btn">Resend</button>
+            </div>
+        
+            <p class="note">Note: Wait for 1-2 minutes before resending your code</p>
+            <button type="button" id="next-btn">Next</button>
+        </div>
+    
+        <!-- Footer Section-->
+        <footer>
+            <p>
+                Student Assistance Resource Center, Quezon City University, San Bartolome Branch <br>
+                <img src="img/location-icon.png" alt="Location"> Ground Floor, Academic Building <br>
+                <img src="img/phone-icon.png" alt="Phone"> (02) 8806-3049
+            </p>
+        </footer>
+
+        <script src="myscripts.js"></script>
+    </body>
+</html>

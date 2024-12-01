@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up | Student Assistance Resource Center Scheduling Portal</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="overlay"></div>
+
+        <!-- Header Section -->
+        <header class="signupform-space">
+            <img src="img/sarclogonobg.png" alt="SARC Logo">
+            <nav>
+                <a href="/index.html">Home</a>
+                <a href="/events.html">View Events</a>
+                <a href="/login.html">Login</a>
+            </nav>
+        </header>
+
+        <div class="signupform">
+            <h2>SIGN UP</h2>
+            <form id="signup-form">
+                <input type="text" id="name" placeholder="Name" required><br>
+                <input type="text" id="student-number" placeholder="Student Number" required><br>
+                <input type="text" id="contact-number" placeholder="Contact Number" required><br>
+
+                <label class="attach-school-id">Attach School ID (Front Display)</label>
+                <input type="file" id="id-upload" required><br>
+
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to the <a href="#" id="terms-link">Terms & Conditions</a>.</label><br>
+                <button type="submit" id="create-account-success">Create Account</button>
+            </form>
+        </div>
+
+        <!-- Footer Section-->
+        <footer>
+            <p>
+            Student Assistance Resource Center, Quezon City University, San Bartolome Branch <br>
+            <img src="img/location-icon.png" alt="Location"> Ground Floor, Academic Building <br>
+            <img src="img/phone-icon.png" alt="Phone"> (02) 8806-3049
+            </p>
+        </footer>
+
+        <!-- Modal for Terms and Conditions -->
+        <div class="overlay-bg"></div>
+        <div class="modal" id="terms-modal">
+            <h3>Terms & Conditions</h3>
+            <p><strong>1. WHY WE NEED IT:</strong> Your ID is needed to verify your identity and ensure compliance with our
+                policies.</p>
+            <p><strong>2. BE HONEST:</strong> The ID you submit must be real, accurate, and belong to you. Fake or altered
+                IDs are not allowed.</p>
+            <p><strong>3. PRIVACY MATTERS:</strong> We’ll protect your ID and only use it for verification. We won’t share
+                it with others unless required by law.</p>
+            <p><strong>4. WHO CAN SEE IT:</strong> Only authorized staff will have access to your ID, and it won’t be used
+                for anything other than verification.</p>
+            <p><strong>5. WHAT HAPPENS TO IT:</strong> Once we’re done verifying, your ID will be securely stored as per our
+                policy, but not for longer than necessary.</p>
+            <button class="close-btn" id="close-modal">Close</button>
+        </div>
+
+        <!-- Modal for Successful account -->
+        <div class="overlay-bg"></div>
+        <div class="modal" id="create-account-successful-modal">
+            <h3>Sign Up</h3>
+            <p>
+                You have successfully created an account!
+            </p>
+            <button id="proceed">Proceed</button>
+        </div>
+
+        <script src="myscripts.js"></script>
+
+    </body>
+
+</html>

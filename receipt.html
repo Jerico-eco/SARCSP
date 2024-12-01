@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Receipt | Student Assistance Resource Center Scheduling Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/sarcpicblur.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .overlay {
+      background: rgba(255, 255, 255, 0.5);
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    header img {
+      width: 80px;
+      margin-right: 50px;
+      margin-left: 50px;
+    }
+
+    nav {
+      display: flex;
+      gap: 50px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background-color: white;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .profile-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 50%;
+      margin-right: 50px;
+      margin-left: 50px;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 230px;
+      z-index: 1000;
+    }
+
+    .dropdown a {
+      display: inline-block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+      text-align: center;
+      width: 70%;
+    }
+
+    .dropdown a:hover {
+      background-color: #f5f5f5;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .profile-options-icon {
+      padding-left: 10px;
+      padding-top: 10px;
+      width: 16px;
+      height: 16px;
+      margin: 0 auto;
+    }
+
+
+
+
+
+
+    .receipt-container {
+      margin: 0 auto;
+      width: 600px;
+      height: 60vh;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 10px 0;
+    }
+
+    .uploaded-image {
+      margin: 20px auto;
+      width: auto;
+      height: 150px;
+      object-fit: cover;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    /* Footer */
+    footer {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 0.8rem;
+      color: black;
+    }
+
+    footer img {
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay"></div>
+
+  <!-- Header Section -->
+  <header>
+    <img src="img/sarclogonobg.png" alt="SARC Logo">
+    <nav>
+      <a href="/home.html">Home</a>
+      <a href="/events-account.html">View Events</a>
+      <a href="/appoint.html">Appoint</a>
+    </nav>
+    <div class="profile-container">
+      <img src="img/user-profile-icon.png" alt="Profile" class="profile-icon" onclick="toggleDropdown()">
+      <div id="profile-dropdown" class="dropdown hidden">
+        <img src="img/edit-profile-icon.png" alt="Edit Profile Icon" class="profile-options-icon"><a
+          href="/edit-profile.html">Edit Profile ></a> <br>
+        <img src="img/change-password-icon.png" alt="Change Password Icon" class="profile-options-icon"><a
+          href="/change-password.html">Change Password ></a> <br>
+        <img src="img/logout-icon.png" alt="Log Out Icon" class="profile-options-icon"><a href="/index.html">Log Out</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="receipt-container">
+    <h2>Appointment Receipt</h2>
+    <div id="receipt-details">
+      <!-- User details will be displayed here -->
+    </div>
+    <img id="uploaded-image" class="uploaded-image" src="#" alt="Uploaded File">
+    <br>
+    <button onclick="goBack()">Return to Appointment Form</button>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>
+      Student Assistance Resource Center, Quezon City University, San Bartolome Branch <br>
+      <img src="img/location-icon.png" alt="Location"> Ground Floor, Academic Building <br>
+      <img src="img/phone-icon.png" alt="Phone"> (02) 8806-3049
+    </p>
+  </footer>
+
+  <script>
+    // Get appointment details from sessionStorage
+
+    const receiptContainer = document.getElementById("receipt-details");
+    const uploadedImage = document.getElementById("uploaded-image");
+
+    const receiptDetails = JSON.parse(sessionStorage.getItem("appointmentDetails"));
+    if (receiptDetails) {
+      receiptContainer.innerHTML = `
+    <p><strong>Name:</strong> ${receiptDetails.name}</p>
+    <p><strong>Student Number:</strong> ${receiptDetails.studentNumber}</p>
+    <p><strong>Contact Number:</strong> ${receiptDetails.contactNumber}</p>
+    <p><strong>Reason:</strong> ${receiptDetails.reason}</p>
+    <p><strong>Date:</strong> ${receiptDetails.date}</p>
+    <p><strong>Table Number:</strong> ${receiptDetails.table}</p>
+    <p><strong>Seat Number:</strong> ${receiptDetails.seat}</p>
+    <p><strong>Time:</strong> ${receiptDetails.timeStart} - ${receiptDetails.timeEnd}</p>
+  `;
+    }
+
+
+    // Display uploaded file if available
+    if (receiptDetails.uploadedFile) {
+      uploadedImage.src = receiptDetails.uploadedFile;
+    } else {
+      uploadedImage.style.display = "none";
+    }
+
+
+
+    function goBack() {
+      window.location.href = "appoint-form.html";
+    }
+  </script>
+</body>
+
+</html>

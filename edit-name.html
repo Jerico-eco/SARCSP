@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Name | Student Assistance Resource Center Scheduling Portal</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="overlay"></div>
+
+    <!-- Header Section -->
+    <header>
+      <img src="img/sarclogonobg.png" alt="SARC Logo">
+      <nav>
+        <a href="/home.html">Home</a>
+        <a href="/events-account.html">View Events</a>
+        <a href="/appoint.html">Appoint</a>
+      </nav>
+      <div class="profile-container">
+        <img src="img/user-profile-icon.png" alt="Profile" class="profile-icon" onclick="toggleDropdown()">
+        <div id="profile-dropdown" class="dropdown hidden">
+          <img src="img/edit-profile-icon.png" alt="Edit Profile Icon" class="profile-options-icon"><a href="/edit-profile.html">Edit Profile ></a> <br>
+          <img src="img/change-password-icon.png" alt="Change Password Icon" class="profile-options-icon"><a href="/change-name.html">Change Name ></a> <br>
+          <img src="img/logout-icon.png" alt="Log Out Icon" class="profile-options-icon"><a href="/index.html">Log Out</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Change Name Container -->
+    <main>
+      <div class="container change-container">
+        <h1>Name</h1>
+        <hr>
+        <h4>Edit Name</h4>
+        <form>
+          <div class="form-group">
+            <label for="current-name">Current Name:</label>
+            <input type="text" id="current-name" name="current-name" required>
+          </div>
+          <div class="form-group">
+            <label for="new-name">New Name:</label>
+            <input type="text" id="new-name" name="new-name" required>
+          </div>
+          <div class="form-group">
+            <label for="confirm-name">Confirm New Name:</label>
+            <input type="text" id="confirm-name" name="confirm-name" required>
+          </div>
+          <button type="submit" class="submit-btn" onclick="window.location.href='edit-profile.html'">Submit</button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>
+        Student Assistance Resource Center, Quezon City University, San Bartolome Branch <br>
+        <img src="img/location-icon.png" alt="Location"> Ground Floor, Academic Building <br>
+        <img src="img/phone-icon.png" alt="Phone"> (02) 8806-3049
+      </p>
+    </footer>
+
+    <script src="myscripts.js"></script>
+  </body>
+</html>
